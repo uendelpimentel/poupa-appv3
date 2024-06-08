@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, StatusBar, } from 'react-native';
 import { useState } from 'react';
+import { useFonts } from 'expo-font';
 
 export default function Login({ navigation }) {
+
+  const [] = useFonts({ 'Montserrat-VariableFont_wght': require('./../../../assets/fonts/Montserrat-VariableFont_wght.ttf') });
 
   function AcessarCadastro() {
     navigation.navigate('Cadastrar')
@@ -43,7 +46,7 @@ export default function Login({ navigation }) {
         <TextInput
           style={estilos.input}
           keyboardType="email-address"
-          placeholder='Email'
+          placeholder='E-mail'
           placeholderTextColor={"#000"}
           value={login}
           onChangeText={(text) => setLogin(text)} />
@@ -65,21 +68,17 @@ export default function Login({ navigation }) {
           {isEmptySenha == true ? "Campo Vazio" : ""}
         </Text>
 
-
-        <TouchableOpacity>
+        <View style={{alignItems: 'rigth',
+    width:'89%',marginTop:-17}}>
+          <TouchableOpacity>
           <Text style={estilos.texto1}>Esqueceu a senha?</Text>
         </TouchableOpacity>
+          </View>
+      
 
       </View>
 
-      <TouchableOpacity 
-      style={estilos.button}
-      onPress={fnValidar}
-      >
-        <Text>
-          LOGIN
-        </Text>
-      </TouchableOpacity>
+     
 
       <Text style={estilos.texto1}>
         Não tem uma conta?
@@ -90,6 +89,18 @@ export default function Login({ navigation }) {
         <Text style={estilos.texto2}>
           Criar agora!
         </Text>
+        
+      </TouchableOpacity>
+
+
+      <TouchableOpacity 
+      style={estilos.button}
+      onPress={fnValidar}
+      >
+        <Text style={{fontFamily:'Montserrat-VariableFont_wght',
+          fontWeight: '700',}}>
+          LOGIN
+        </Text>
       </TouchableOpacity>
 
     </View>
@@ -98,7 +109,7 @@ export default function Login({ navigation }) {
 
 const estilos = StyleSheet.create({
   container: {
-    backgroundColor: '#0e0e0e',
+    backgroundColor: '#181818',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -109,26 +120,34 @@ const estilos = StyleSheet.create({
     backgroundColor: "#030303",
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 15,
+    gap: 23,
     width: "88%",
     borderRadius: 8,
     paddingTop: 15,
     paddingBottom: 15,
+    height:'20%',
+
   },
 
   input: {
-    backgroundColor: '#fff',
-    width: "80%",
+    marginTop:10,
+    fontFamily:'Montserrat-VariableFont_wght',
+    fontWeight: '500',
+    placeholderTextColor: '#dfdfdf',
+    backgroundColor: '#1E1E1E',
+    width: "90%",
     paddingHorizontal: 8,
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 5,
+    height:"20%",
   },
 
   texto1: {
     color: "#00B14D",
     fontSize: 12,
+    textAlign: 'right',
+    
   },
-
   texto2: {
     color: "#fff",
     fontSize: 15,
@@ -143,17 +162,24 @@ const estilos = StyleSheet.create({
 
   button: {
     backgroundColor: "#00B14D",
-    width: "48%",
+    width: "88%",
+    height:40,
     alignItems: "center",
-    marginTop: 16,
-    paddingVertical: 8,
+    alignContent:"center",
+    justifyContent:"center",
+    marginTop: 150,
+   
     borderRadius: 8,
     borderWidth: 1,
     marginBottom: 30,
+    fontFamily:'Montserrat-VariableFont_wght',
+    fontWeight: '600',
   },
 
   logo: {
-    width: 304,
-    height: 304,
+    marginTop:"15%",
+    marginBottom:"5%",
+    width:350,
+    height: 350,
   }
 });

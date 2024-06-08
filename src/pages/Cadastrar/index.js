@@ -159,7 +159,7 @@ export default function Cadastrar({ navigation }) {
 
 const estilos = StyleSheet.create({
   container: {
-    backgroundColor: '#0e0e0e',
+    backgroundColor: '#1E1E1E',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
