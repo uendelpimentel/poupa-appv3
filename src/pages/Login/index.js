@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 
 export default function Login({ navigation }) {
 
-  const [] = useFonts({ 'Montserrat-VariableFont_wght': require('./../../../assets/fonts/Montserrat-VariableFont_wght.ttf') });
+  let [] = useFonts({ 'Montserrat': require('./../../../assets/fonts/Montserrat-VariableFont_wght.ttf') });
 
   function AcessarCadastro() {
     navigation.navigate('Cadastrar')
@@ -97,7 +97,7 @@ export default function Login({ navigation }) {
       style={estilos.button}
       onPress={fnValidar}
       >
-        <Text style={{fontFamily:'Montserrat-VariableFont_wght',
+        <Text style={{fontFamily:'Montserrat',
           fontWeight: '700',}}>
           LOGIN
         </Text>
@@ -131,7 +131,7 @@ const estilos = StyleSheet.create({
 
   input: {
     marginTop:10,
-    fontFamily:'Montserrat-VariableFont_wght',
+    fontFamily:'Montserrat',
     fontWeight: '500',
     placeholderTextColor: '#dfdfdf',
     backgroundColor: '#1E1E1E',
@@ -172,7 +172,7 @@ const estilos = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginBottom: 30,
-    fontFamily:'Montserrat-VariableFont_wght',
+    // fontFamily:'Montserrat-VariableFont_wght',
     fontWeight: '600',
   },
 

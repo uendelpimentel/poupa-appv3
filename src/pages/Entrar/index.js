@@ -12,8 +12,11 @@ const ANIMATION_DURATION = 1000; // Adjust for desired animation speed
 
 export default function Entrar() {
 
-  const [] = useFonts({ 'Montserrat-VariableFont_wght': require('./../../../assets/fonts/Montserrat-VariableFont_wght.ttf') });
+  let [] = useFonts({ 'Montserrat': require('./../../../assets/fonts/Montserrat-VariableFont_wght.ttf') });
+  
 
+  
+  
   const navigation = useNavigation();
   function AcessarLogin() {
     navigation.navigate('Login')
@@ -119,7 +122,7 @@ const estilos = StyleSheet.create({
   text1:{
     color:"#ffffff",
     textAlign:"center",
-    fontFamily:'Montserrat-VariableFont_wght',
+    fontFamily:'Montserrat',
     fontSize: 14,
     fontWeight: '400',
   },
@@ -141,7 +144,7 @@ const estilos = StyleSheet.create({
     textAlign:"center",
     alignContent:"center",
     alignItems:"center",
-    fontFamily:'Montserrat-VariableFont_wght',
+    fontFamily:'Montserrat',
     fontSize: 13,
     fontWeight: '800',
    
