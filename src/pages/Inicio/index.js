@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, StatusBar } from 'react-native';
 
-export default function Home({ navigation }) {
+export default function Inicio({ navigation }) {
 
     return (
         <View style={estilos.container}>

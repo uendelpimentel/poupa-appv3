@@ -15,6 +15,8 @@ export default function Login({ navigation }) {
   const [isEmptyLogin, setIsEmptyLogin] = useState(false);
   const [isEmptySenha, setIsEmptySenha] = useState(false);
 
+
+
   function fnValidar() {
     let sLogin = login;
     let sSenha = senha;
@@ -26,9 +28,16 @@ export default function Login({ navigation }) {
     }
 
     if (sSenha == '') {
-      setIsEmptyLogin(true);
+      setIsEmptySenha(true);
     } else {
       navigation.navigate('Inicio')
+    }
+
+     if(sSenha!=''&& sLogin!=''){
+      
+      navigation.navigate('Home')
+      console.log('entrou');
+      
     }
   }
 
@@ -139,7 +148,7 @@ const estilos = StyleSheet.create({
     paddingHorizontal: 8,
     borderWidth: 1,
     borderRadius: 5,
-    height:"20%",
+    height:35,
   },
 
   texto1: {
@@ -151,6 +160,7 @@ const estilos = StyleSheet.create({
   texto2: {
     color: "#fff",
     fontSize: 15,
+    marginBottom:62,
   },
 
   alerta: {
@@ -168,17 +178,15 @@ const estilos = StyleSheet.create({
     alignContent:"center",
     justifyContent:"center",
     marginTop: 150,
-   
     borderRadius: 8,
     borderWidth: 1,
     marginBottom: 30,
-    // fontFamily:'Montserrat-VariableFont_wght',
+    fontFamily:'Montserrat',
     fontWeight: '600',
   },
 
   logo: {
-    marginTop:"15%",
-    marginBottom:"5%",
+    marginTop:20,
     width:350,
     height: 350,
   }

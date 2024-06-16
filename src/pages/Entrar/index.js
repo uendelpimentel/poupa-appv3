@@ -27,35 +27,36 @@ export default function Entrar() {
   
  
   const [animatedValue] = useState(new Animated.Value(0));
+  const [textOpacity] = useState(new Animated.Value(0));
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      Animated.parallel([
-        Animated.timing(animatedValue, {
+      Animated.timing(animatedValue, {
+        toValue: 1,
+        duration: ANIMATION_DURATION,
+        useNativeDriver: true, // Optimize performance (if applicable)
+      }).start(() => {
+        // Start text animation after logo animation finishes
+        Animated.decay(textOpacity, {
           toValue: 1,
-          duration: ANIMATION_DURATION,
           useNativeDriver: true, // Optimize performance (if applicable)
-        }),
-        Animated.timing(animatedValue.interpolate({ inputRange: [0, 1], outputRange: [0, 1] }), {
-          toValue: 1,
-          duration: ANIMATION_DURATION,
-          useNativeDriver: true, // Optimize performance (if applicable)
-        }),
-      ]).start(() => {
-        // Optionally delay navigation after animation
-        // setTimeout(() => navigation.navigate('Login'), 1000);
+          // Adjust deceleration for desired overlap
+          deceleration: 0.99, // Higher value creates more overlap
+        }).start();
       });
     }, INITIAL_DELAY);
 
     return () => clearTimeout(timeoutId); // Cleanup on component unmount
   }, []);
 
+
+
   return (
     <View style={estilos.container}>
       {/* Animate logo */}
       <Animated.View
         style={{
-          transform: [{ translateY: animatedValue.interpolate({ inputRange: [0, 1], outputRange: [0, -172] }) }],
+          transform: [{ translateY: animatedValue.interpolate({ inputRange: [0, 1], outputRange: [0, -215] }) }],
           position: 'absolute', // Use 'absolute' for logo
           top: 240, // Adjust initial position as needed
           left: 31,
@@ -79,12 +80,11 @@ export default function Entrar() {
         <View style={estilos.div2}>
           
           <Text style={estilos.text1}>Faça seu Login ou cadastre-se para continuar</Text>
+          
           <View style={{flexDirection: 'row',width:'100%',height:"100%",paddingTop:10 ,gap:2}}>   
             <TouchableOpacity style={estilos.btnLogin}
             onPress={AcessarLogin}>
-            <Text style={estilos.text2}
-            
-            >
+            <Text style={estilos.text2}>
               LOGIN
             </Text>
           </TouchableOpacity>
@@ -95,12 +95,15 @@ export default function Entrar() {
             <Text style={estilos.text2}>
               CADASTRAR
             </Text>
-          </TouchableOpacity> </View>  
+          </TouchableOpacity> 
+          </View>  
         
         </View>
+
       </Animated.View>
     </View>
   );
+  
 }
 
 const estilos = StyleSheet.create({
@@ -157,4 +160,6 @@ const estilos = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+ 
 });
+

@@ -1,8 +1,13 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, StatusBar, } from 'react-native';
 import { useState } from 'react';
+import { useFonts } from 'expo-font';
+// import apiMockApi from '../../services/MockApi';
 
 export default function Cadastrar({ navigation }) {
 
+  let [] = useFonts({ 'Montserrat': require('./../../../assets/fonts/Montserrat-VariableFont_wght.ttf') });
+
+ 
   function AcessarLogin() {
     navigation.navigate('Login')
   }
@@ -57,6 +62,25 @@ export default function Cadastrar({ navigation }) {
     }
 
   }
+
+  // apiMockApi
+  // .post("USUARIOS", dados)
+  // .then((response) => {
+  //   if (response.status === 201) {
+  //     alert("Usuário cadastrado com sucesso!");
+  //     // Limpar os campos do formulário
+  //     setNome("");
+  //     setEmail("");
+  //     setSenha("");
+  //     setConfirmarSenha("");
+  //   } else {
+  //     alert("Erro ao cadastrar usuário!");
+  //   }
+  // })
+  // .catch((error) => {
+  //   console.error(error);
+  //   alert("Erro inesperado ao cadastrar usuário!");
+  // });
 
 
   return (
@@ -126,20 +150,14 @@ export default function Cadastrar({ navigation }) {
           {isEmptySenha2 == true ? "Campo Vazio" : ""}
         </Text>
 
-        <TouchableOpacity>
+        <View style={{alignItems: 'rigth',
+         width:'89%',marginTop:-2}}>
+          <TouchableOpacity>
           <Text style={estilos.texto1}>Esqueceu a senha?</Text>
         </TouchableOpacity>
+          </View>
 
       </View>
-
-      <TouchableOpacity
-        style={estilos.button}
-        onPress={fnValidar}
-      >
-        <Text>
-          CADASTRAR
-        </Text>
-      </TouchableOpacity>
 
       <Text style={estilos.texto1}>
         Já tem uma conta?
@@ -152,6 +170,19 @@ export default function Cadastrar({ navigation }) {
           Logar agora!
         </Text>
       </TouchableOpacity>
+
+
+      <TouchableOpacity
+        style={estilos.button}
+        onPress={fnValidar}
+      >
+        <Text style={{fontFamily:'Montserrat',
+          fontWeight: '700',}}>
+          CADASTRAR
+        </Text>
+      </TouchableOpacity>
+
+
 
     </View>
   );
@@ -170,25 +201,31 @@ const estilos = StyleSheet.create({
     backgroundColor: "#030303",
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 20,
+    gap: 23,
     width: "88%",
     borderRadius: 8,
     paddingTop: 15,
     paddingBottom: 15,
-    marginTop: -60,
+    height:380,
   },
 
   input: {
-    backgroundColor: '#fff',
-    width: "80%",
+    marginTop:10,
+    fontFamily:'Montserrat',
+    fontWeight: '500',
+    placeholderTextColor: '#dfdfdf',
+    backgroundColor: '#1E1E1E',
+    width: "90%",
     paddingHorizontal: 8,
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 5,
+    height:35,
   },
 
   texto1: {
     color: "#00B14D",
     fontSize: 12,
+    textAlign: 'right',
   },
 
   texto2: {
@@ -205,18 +242,21 @@ const estilos = StyleSheet.create({
 
   button: {
     backgroundColor: "#00B14D",
-    width: "48%",
+    width: "88%",
+    height:40,
     alignItems: "center",
-    marginTop: 16,
-    paddingVertical: 8,
+    alignContent:"center",
+    justifyContent:"center",
+    marginTop: 14,
     borderRadius: 8,
     borderWidth: 1,
-    marginBottom: 30,
+    marginBottom: 9,
+    fontFamily:'Montserrat',
+    fontWeight: '600',
   },
 
   logo: {
-    width: 260,
-    height: 260,
-    marginTop: -80,
+    width:350,
+    height: 350,
   }
 });
