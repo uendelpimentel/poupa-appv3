@@ -68,7 +68,7 @@ export default function Cadastrar({ navigation }) {
   // .then((response) => {
   //   if (response.status === 201) {
   //     alert("Usuário cadastrado com sucesso!");
-  //     // Limpar os campos do formulário
+  //     Limpar os campos do formulário
   //     setNome("");
   //     setEmail("");
   //     setSenha("");
